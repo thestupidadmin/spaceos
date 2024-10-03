@@ -217,6 +217,12 @@ def execute_command(command):
             return
         filename = parts[1]
         touch(filename)
+    elif cmd == "rm":
+        if len(parts) < 2:
+            print("Usage: rm <filename>")
+            return
+        filename = parts[1]
+        os.system(f"rm -rf {filename}")
     elif cmd == "pwd":
         pwd()
     else:
