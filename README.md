@@ -42,7 +42,7 @@ SpaceOS uses a minimalist and straightforward file structure:
 - `/etc`: Configuration files, including the list of repositories for app installations.
 - `/home`: Home directories for user data.
 - `/root`: Root user’s directory for administrative tasks.
-- `/main.py`: Init System Starter (Starts the cmd, etc).
+- `/os.py`: Init System Starter (Starts the cmd, etc).
 
 ## Running Linux on SpaceOS
 
