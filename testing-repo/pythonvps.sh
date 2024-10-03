@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 HOME="/home/container"
 HOMEA="$HOME/linux/.apt"
@@ -10,33 +10,37 @@ STAR5="$HOMEA/usr/lib/x86_64-linux-gnu/gtk-2.0/modules:$HOMEA/usr/lib/x86_64-lin
 STAR6="$HOMEA/usr/lib/x86_64-linux-gnu/samba/:$HOMEA/usr/lib/x86_64-linux-gnu/pulseaudio:$HOMEA/usr/lib/x86_64-linux-gnu/blas:$HOMEA/usr/lib/x86_64-linux-gnu/blis-serial"
 STAR7="$HOMEA/usr/lib/x86_64-linux-gnu/blis-openmp:$HOMEA/usr/lib/x86_64-linux-gnu/atlas:$HOMEA/usr/lib/x86_64-linux-gnu/tracker-miners-2.0:$HOMEA/usr/lib/x86_64-linux-gnu/tracker-2.0:$HOMEA/usr/lib/x86_64-linux-gnu/lapack:$HOMEA/usr/lib/x86_64-linux-gnu/gedit"
 STARALL="$STAR1:$STAR2:$STAR3:$STAR4:$STAR5:$STAR6:$STAR7"
-export LD_LIBRARY_PATH=$STARALL
-export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:$HOMEA/bin:$HOMEA/usr/bin:$HOMEA/sbin:$HOMEA/usr/sbin:$HOMEA/etc/init.d:$PATH"
-export BUILD_DIR=$HOMEA
 
-bold=$(echo -en "\e[1m")
-nc=$(echo -en "\e[0m")
-lightblue=$(echo -en "\e[94m")
-lightgreen=$(echo -en "\e[92m")
+export LD_LIBRARY_PATH="$STARALL"
+export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:$HOMEA/bin:$HOMEA/usr/bin:$HOMEA/sbin:$HOMEA/usr/sbin:$HOMEA/etc/init.d:$PATH"
+export BUILD_DIR="$HOMEA"
+
+# ANSI color codes
+bold=$(printf "\e[1m")
+nc=$(printf "\e[0m")
+lightblue=$(printf "\e[94m")
+lightgreen=$(printf "\e[92m")
 
 echo "
-${bold}${lightgreen} PythonVPS
+${bold}${lightgreen} PythonVPS 
+Best Proot VPS, hostable on SpaceOS. By discord.gg/hetzner
+===
 "
 
-if [[ -f "./installed" ]]; then
-    echo "${bold}${lightgreen}==> Started ${lightblue}Container${lightgreen} <=="
+if [ -f "./installed" ]; then
+    echo "${bold}${lightgreen}==> Started ${lightblue}VPS${lightgreen} <=="
 
     runcmd1() {
-        printf "${bold}${lightgreen}Default${nc}@${lightblue}Container${nc}:~ "
-        read -r cmdtorun
-        ./libraries/proot -S . /bin/bash -c "$cmdtorun"
+        printf "${bold}${lightgreen}root${nc}@${lightblue}PythonVPS${nc}:~$ "
+        read cmdtorun
+        ./libraries/proot -S . /bin/sh -c "$cmdtorun"
         runcmd
     }
 
     runcmd() {
-        printf "${bold}${lightgreen}Default${nc}@${lightblue}Container${nc}:~ "
-        read -r cmdtorun
-        ./libraries/proot -S . /bin/bash -c "$cmdtorun"
+        printf "${bold}${lightgreen}root${nc}@${lightblue}PythonVPS${nc}:~$ "
+        read cmdtorun
+        ./libraries/proot -S . /bin/sh -c "$cmdtorun"
         runcmd1
     }
 
@@ -59,10 +63,10 @@ else
     rm -rf files.zip root.zip root.tar.gz ngrok.zip >/dev/null 2>err.log
     echo -ne '############         (60%)\r'
 
-    cmds=("echo hello")
+    cmds="echo hello"
 
-    for cmd in "${cmds[@]}"; do
-        ./libraries/proot -S . /bin/bash -c "$cmd" >/dev/null 2>err.log
+    for cmd in $cmds; do
+        ./libraries/proot -S . /bin/sh -c "$cmd" >/dev/null 2>err.log
     done
     echo -ne '####################(100%)\r'
     echo -ne '\n'
@@ -70,21 +74,23 @@ else
 
     echo "
 ${bold}${lightgreen} PythonVPS
+Best Proot VPS, hostable on SpaceOS. By discord.gg/hetzner
+===
 "
 
-    echo "${bold}${lightgreen}==> Started ${lightblue}Container${lightgreen} <=="
+    echo "${bold}${lightgreen}==> Started ${lightblue}VPS${lightgreen} <=="
 
     runcmd1() {
-        printf "${bold}${lightgreen}Default${nc}@${lightblue}Container${nc}:~ "
-        read -r cmdtorun
-        ./libraries/proot -S . /bin/bash -c "$cmdtorun"
+        printf "${bold}${lightgreen}root${nc}@${lightblue}PythonVPS${nc}:~$ "
+        read cmdtorun
+        ./libraries/proot -S . /bin/sh -c "$cmdtorun"
         runcmd
     }
 
     runcmd() {
-        printf "${bold}${lightgreen}Default${nc}@${lightblue}Container${nc}:~ "
-        read -r cmdtorun
-        ./libraries/proot -S . /bin/bash -c "$cmdtorun"
+        printf "${bold}${lightgreen}root${nc}@${lightblue}PythonVPS${nc}:~$ "
+        read cmdtorun
+        ./libraries/proot -S . /bin/sh -c "$cmdtorun"
         runcmd1
     }
 
