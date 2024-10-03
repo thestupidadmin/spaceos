@@ -23,7 +23,7 @@ USERS_FILE = os.path.join(base_directory, 'etc', 'users')
 REPO_FILE = os.path.join(base_directory, 'etc', 'appinstallrepos')
 HOME_DIR = os.path.join(base_directory, 'home')
 ROOT_HOME_DIR = os.path.join(HOME_DIR, 'root')
-DEFAULT_REPO = "https://raw.githubusercontent.com/thestupidadmin/spacetest/refs/heads/main"
+DEFAULT_REPO = "https://github.com/thestupidadmin/spaceosrepo/raw/refs/heads/main/repos"
 
 def initialize_file_system():
     os.makedirs(os.path.join(base_directory, 'bin'), exist_ok=True)
