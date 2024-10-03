@@ -1,2 +1,5 @@
-SpaceSH Default Repo
-# This will have lots of apps for you to get into (Some are dangerus and some are for running actual debian 10 linux in it)
+SpaceOS Default Repo
+## The Default SpaceOS Repo for packages
+To make a package for this repo. 
+Its python based OS. You can program anything.
+Just make a pull request and we will review it
