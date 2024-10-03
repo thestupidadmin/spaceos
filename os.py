@@ -229,8 +229,6 @@ def execute_command(command):
 def touch(filename):
     print("Due to how SpaceOS is created. we as the developrs are unable to make write perms due to how the vfs is made. Please make a pr and add code. we would love it <3")
 
-
-
 def pwd():
     print(current_home)
 
