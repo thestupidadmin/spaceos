@@ -1,3 +1,5 @@
+print("You might have to do pip3 install aiohttp and asyncio and aiofiles so this script can work")
+
 import os
 import aiohttp      
 import asyncio  
