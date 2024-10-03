@@ -18,11 +18,13 @@ Welcome to **SpaceOS repo**, an ultra-lightweight, flexible, and highly customiz
 
 - **Ideal for VPS Hosting**: With its Python-centric design, SpaceOS is an excellent choice for those looking to host virtual private servers (VPS). If you're familiar with building a Discord bot or other server-based applications, you can easily scale SpaceOS to serve as a minimal yet capable VPS environment.
 
+- **Isolated File System**: SpaceOS features an isolated file system that prevents interference with the host file system. This means it cannot access or modify files on the host system unless explicitly allowed. However, running Python 3 with `sudo` can expose vulnerabilities to commands like `rm -rf` and package-related attacks, ensuring that users remain cautious when granting elevated permissions.
+
 ## System Requirements
 
-- **RAM**: 1KB minimum
-- **Storage**: 1MB minimum
-- **CPU**: 1 core
+- **RAM**: 1KB minimum (256MB RAM recommanded to avoid crashes due to python)
+- **Storage**: 1MB minimum (256MB recommanded for lots of packages (they might need 3rd party pip packages))
+- **CPU**: 1 core (recommanded 1core)
 
 SpaceOS can run on virtually any hardware setup, making it ideal for embedded systems, low-power devices, and educational projects where resources are limited.
 
@@ -30,7 +32,7 @@ SpaceOS can run on virtually any hardware setup, making it ideal for embedded sy
 
 SpaceOS's package management system is simple and open-source. All packages are Python-based and can be installed directly from repositories specified in configuration files.
 
-All applications are installed into the `/bin` directory, and they can be executed directly from there. and if you can upload files than you can directly program the apps. or upload them without using appinstall.
+All applications are installed into the `bin` directory, and they can be executed directly from there. If you can upload files, you can directly program the apps or upload them without using `appinstall`.
 
 ## File System Overview
 
@@ -40,6 +42,7 @@ SpaceOS uses a minimalist and straightforward file structure:
 - `/etc`: Configuration files, including the list of repositories for app installations.
 - `/home`: Home directories for user data.
 - `/root`: Root user’s directory for administrative tasks.
+- `/main.py`: Init System Starter (Starts the cmd, etc).
 
 ## Running Linux on SpaceOS
 
@@ -66,3 +69,5 @@ Contributions are welcome! If you have an idea for improving SpaceOS or wish to 
 SpaceOS is open-source and available under the MIT License.
 
 Experience the power of simplicity with **SpaceOS** — a Python-based operating system that makes development and deployment fast, efficient, and accessible to all.
+
+Fun fact: You can run spaceos in spaceos in spaceos in spaceos using the isovm package.
