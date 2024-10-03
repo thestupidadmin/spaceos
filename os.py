@@ -221,19 +221,58 @@ def execute_command(command):
             return
         target = parts[1]
         rm(target)
+    elif cmd == "help":
+        help_command()
     elif cmd == "mkdir":
         if len(parts) < 2:
             print("Usage: mkdir <directory>")
             return
         dirname = parts[1]
-        os.makedirs(os.path.join(current_home, dirname), exist_ok=True)
-        print(f"Directory '{dirname}' created.")
+        mkdir(dirname)
+    elif cmd == "touch":
+        if len(parts) < 2:
+            print("Usage: touch <filename>")
+            return
+        filename = parts[1]
+        touch(filename)
+    elif cmd == "pwd":
+        pwd()
     else:
-        bin_command_path = os.path.join(base_directory, 'bin', f"{cmd}.py")
-        if os.path.exists(bin_command_path):
-            os.system(f"python3 {bin_command_path} {' '.join(parts[1:])}")
+        bin_cmd_path = os.path.join(base_directory, 'bin', f"{cmd}.py")
+        if os.path.exists(bin_cmd_path):
+            os.system(f"python3 {bin_cmd_path} {' '.join(parts[1:])}")
         else:
-            print(f"Command '{cmd}' not found.")
+            print("Command not found.")
+
+def touch(filename):
+    file_path = os.path.join(current_home, filename)
+    with open(file_path, 'a'):
+        pass
+    print(f"File '{filename}' created.")
+
+def pwd():
+    print(current_home)
+
+def help_command():
+    commands = {
+        "echo": "Print text to the output.",
+        "cat": "Display the contents of a file.",
+        "appinstall": "Install an application.",
+        "appremove": "Remove an installed application.",
+        "appreinstall": "Reinstall an application.",
+        "vpasswd": "Change the password for a user.",
+        "adduser": "Add a new user.",
+        "removeuser": "Remove an existing user.",
+        "su": "Switch to another user.",
+        "help": "Display this help message.",
+        "exit": "Exit the OS.",
+        "mkdir": "Create a new directory.",
+        "touch": "Create a new empty file.",
+        "pwd": "Print the current working directory.",
+        "rm": "Remove a file or directory."
+    }
+    for cmd, desc in commands.items():
+        print(f"{cmd}: {desc}")
 
 initialize_file_system()
 
@@ -243,3 +282,4 @@ if login():
         execute_command(command)
 else:
     print("Failed to login.")
+
