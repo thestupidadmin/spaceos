@@ -12,7 +12,7 @@ signal.signal(signal.SIGINT, signal_handler)
 print("Starting SpaceOS Init")
 total_steps = 100
 for i in range(total_steps + 1):
-    time.sleep(0.0050)
+    time.sleep(0.0015)
     print(f"\r[{'#' * (i // 2)}{' ' * (50 - i // 2)}] {i}%", end="")
     sys.stdout.flush()
 print("\nSpaceOS Init Complete!")
@@ -23,7 +23,7 @@ USERS_FILE = os.path.join(base_directory, 'etc', 'users')
 REPO_FILE = os.path.join(base_directory, 'etc', 'appinstallrepos')
 HOME_DIR = os.path.join(base_directory, 'home')
 ROOT_HOME_DIR = os.path.join(HOME_DIR, 'root')
-DEFAULT_REPO = "https://github.com/thestupidadmin/spaceos/raw/refs/heads/main/repos"
+DEFAULT_REPO = "https://raw.githubusercontent.com/thestupidadmin/spaceos/refs/heads/main/repos"
 
 def initialize_file_system():
     os.makedirs(os.path.join(base_directory, 'bin'), exist_ok=True)
@@ -80,7 +80,7 @@ def appinstall(app_name):
                 print(f"Installing {app_name}...")
                 total_steps = 100
                 for i in range(total_steps + 1):
-                    time.sleep(0.0020)
+                    time.sleep(0.0018)
                     progress = f"\r[{ '#' * (i // 2) }{ ' ' * (50 - i // 2) }] {i}%"
                     print(progress, end="")
                     sys.stdout.flush()
