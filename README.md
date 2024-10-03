@@ -1,6 +1,6 @@
 # SpaceOS
 
-Welcome to **SpaceOS repo**, an ultra-lightweight, flexible, and highly customizable operating system built entirely in Python. SpaceOS brings the simplicity of Python programming to the world of operating systems, allowing you to run anything from small scripts to complex applications. It's designed with flexibility in mind, offering low system requirements while remaining as powerful and adaptable as modern Linux distributions like Arch Linux.
+Welcome to **SpaceOS**, an ultra-lightweight, flexible, and highly customizable operating system built entirely in Python. SpaceOS brings the simplicity of Python programming to the world of operating systems, allowing you to run anything from small scripts to complex applications. It's designed with flexibility in mind, offering low system requirements while remaining as powerful and adaptable as modern Linux distributions like Arch Linux.
 
 ## Key Features
 
@@ -8,7 +8,7 @@ Welcome to **SpaceOS repo**, an ultra-lightweight, flexible, and highly customiz
   
 - **Extremely Lightweight**: SpaceOS can run on minimal hardware requirements (1KB RAM, 1MB storage, and a single CPU core), making it ideal for low-resource environments or educational use. Despite being lightweight, it remains highly functional.
 
-- **Custom File System**: SpaceOS introduces its own file system architecture that organizes user, system, and application files in a simple and intuitive manner. There's a `/root` directory for the root user, and all applications are managed within `/bin`.
+- **Custom File System**: SpaceOS introduces its own file system architecture that organizes user, system, and application files in a simple and intuitive manner. There's a `/root` directory for the root user, and all applications are managed within `/bin`. However the filesystem is limited and contains some bugs.
 
 - **Open-source Package Repositories**: SpaceOS integrates with open-source repositories, making it easy to install Python-based packages from community-maintained sources. Applications are simply Python scripts that can be installed, removed, and managed directly from the system.
 
@@ -54,7 +54,7 @@ If you’re familiar with using `proot` to run Linux in a Python environment, yo
 To install SpaceOS, simply clone the repository and execute the main script:
 ```bash
 git clone https://github.com/thestupidadmin/spaceos.git
-cd sspaceos
+cd spaceos
 python3 os.py
 ```
 
