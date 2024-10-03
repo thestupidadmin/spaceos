@@ -197,24 +197,6 @@ def execute_command(command):
             return
         username = parts[1]
         vpasswd(username)
-    elif cmd.startswith("adduser"):
-        if len(parts) < 2:
-            print("Usage: adduser <username>")
-            return
-        new_user = parts[1]
-        adduser(new_user)
-    elif cmd.startswith("removeuser"):
-        if len(parts) < 2:
-            print("Usage: removeuser <username>")
-            return
-        user_to_remove = parts[1]
-        removeuser(user_to_remove)
-    elif cmd.startswith("su"):
-        if len(parts) < 2:
-            print("Usage: su <username>")
-            return
-        user_to_switch = parts[1]
-        su(user_to_switch)
     elif cmd == "rm":
         if len(parts) < 2:
             print("Usage: rm <file/directory>")
@@ -245,13 +227,15 @@ def execute_command(command):
             print("Command not found.")
 
 def touch(filename):
-    file_path = os.path.join(current_home, filename)
-    with open(file_path, 'a'):
-        pass
-    print(f"File '{filename}' created.")
+    print("Due to how SpaceOS is created. we as the developrs are unable to make write perms due to how the vfs is made. Please make a pr and add code. we would love it <3")
+
+
 
 def pwd():
     print(current_home)
+
+def mkdir(dirname):
+    print("Due to how SpaceOS is created. we as the developrs are unable to make write perms due to how the vfs is made. Please make a pr and add code. we would love it <3")
 
 def help_command():
     commands = {
@@ -260,14 +244,9 @@ def help_command():
         "appinstall": "Install an application.",
         "appremove": "Remove an installed application.",
         "appreinstall": "Reinstall an application.",
-        "vpasswd": "Change the password for a user.",
-        "adduser": "Add a new user.",
-        "removeuser": "Remove an existing user.",
-        "su": "Switch to another user.",
+        "vpasswd": "Change the password for the root user.",
         "help": "Display this help message.",
         "exit": "Exit the OS.",
-        "mkdir": "Create a new directory.",
-        "touch": "Create a new empty file.",
         "pwd": "Print the current working directory.",
         "rm": "Remove a file or directory."
     }
