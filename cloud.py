@@ -12,7 +12,7 @@ signal.signal(signal.SIGINT, signal_handler)
 print("Starting SpaceOS Init (Cloud-Python-discord.gg/hetzner)")
 total_steps = 100
 for i in range(total_steps + 1):
-    time.sleep(0.0015)
+    time.sleep(0.0005)
     print(f"\r[{'#' * (i // 2)}{' ' * (50 - i // 2)}] {i}%", end="")
     sys.stdout.flush()
 print("\nSpaceOS Init Complete!")
