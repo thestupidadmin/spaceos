@@ -32,7 +32,7 @@
             "name": "Auto Update (You cant change)",
             "description": "SpaceOS Cloud is by discord.gg\/hetzner",
             "env_variable": "STARTUP_CMD",
-            "default_value": "wget -O cloud.py https:\/\/raw.githubusercontent.com\/thestupidadmin\/spaceos\/refs\/heads\/main\/cloud.py",
+            "default_value": "wget -O os.py https:\/\/raw.githubusercontent.com\/thestupidadmin\/spaceos\/refs\/heads\/main\/cloud.py",
             "user_viewable": true,
             "user_editable": false,
             "rules": "string",
