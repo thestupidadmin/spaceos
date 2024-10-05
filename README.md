@@ -60,6 +60,9 @@ python3 os.py
 
 SpaceOS will initialize, and you’ll be ready to start installing packages or writing your own Python-based applications.
 
+### For pterodactyl
+You can use our egg. Just look in the repo files and download it and upload it to the panel. For use in pterodactyl ONLY! Also if you are looking to make cloud images for SpaceOS. Use cloud.py. its meant for cloud and its made for that. Be aware that the cloud image uses password root. 
+
 ## Contributing
 
 Contributions are welcome! If you have an idea for improving SpaceOS or wish to contribute Python-based packages, feel free to submit issues or pull requests to the repository.
