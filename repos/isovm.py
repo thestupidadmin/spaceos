@@ -9,13 +9,13 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-print("Starting SpaceOS Init - ISOVM Kernel")
+print("Starting SpaceOS Init (Cloud-Python-discord.gg/hetzner)")
 total_steps = 100
 for i in range(total_steps + 1):
-    time.sleep(0.050)
+    time.sleep(0.0005)
     print(f"\r[{'#' * (i // 2)}{' ' * (50 - i // 2)}] {i}%", end="")
     sys.stdout.flush()
-print("\nSpaceOS Init Complete! - ISOVM Kernel")
+print("\nSpaceOS Init Complete!")
 
 base_directory = os.path.dirname(os.path.abspath(__file__))
 hostname = os.uname()[1]
@@ -23,7 +23,7 @@ USERS_FILE = os.path.join(base_directory, 'etc', 'users')
 REPO_FILE = os.path.join(base_directory, 'etc', 'appinstallrepos')
 HOME_DIR = os.path.join(base_directory, 'home')
 ROOT_HOME_DIR = os.path.join(HOME_DIR, 'root')
-DEFAULT_REPO = "https://github.com/thestupidadmin/spaceosrepo/raw/refs/heads/main/repos"
+DEFAULT_REPO = "https://raw.githubusercontent.com/thestupidadmin/spaceos/refs/heads/main/repos"
 
 def initialize_file_system():
     os.makedirs(os.path.join(base_directory, 'bin'), exist_ok=True)
@@ -34,7 +34,7 @@ def initialize_file_system():
     if not os.path.exists(USERS_FILE):
         with open(USERS_FILE, 'w') as f:
             f.write("root:root:/root\n")
-            print("Default user 'root' created without password.")
+            print("Default user 'root' created with password root.")
 
     if not os.path.exists(REPO_FILE):
         with open(REPO_FILE, 'w') as f:
@@ -80,7 +80,7 @@ def appinstall(app_name):
                 print(f"Installing {app_name}...")
                 total_steps = 100
                 for i in range(total_steps + 1):
-                    time.sleep(0.0020)
+                    time.sleep(0.0018)
                     progress = f"\r[{ '#' * (i // 2) }{ ' ' * (50 - i // 2) }] {i}%"
                     print(progress, end="")
                     sys.stdout.flush()
@@ -197,49 +197,65 @@ def execute_command(command):
             return
         username = parts[1]
         vpasswd(username)
-    elif cmd.startswith("adduser"):
-        if len(parts) < 2:
-            print("Usage: adduser <username>")
-            return
-        new_user = parts[1]
-        adduser(new_user)
-    elif cmd.startswith("removeuser"):
-        if len(parts) < 2:
-            print("Usage: removeuser <username>")
-            return
-        user_to_remove = parts[1]
-        removeuser(user_to_remove)
-    elif cmd.startswith("su"):
-        if len(parts) < 2:
-            print("Usage: su <username>")
-            return
-        user_to_switch = parts[1]
-        su(user_to_switch)
     elif cmd == "rm":
         if len(parts) < 2:
             print("Usage: rm <file/directory>")
             return
         target = parts[1]
         rm(target)
+    elif cmd == "help":
+        help_command()
     elif cmd == "mkdir":
         if len(parts) < 2:
             print("Usage: mkdir <directory>")
             return
         dirname = parts[1]
-        os.makedirs(os.path.join(current_home, dirname), exist_ok=True)
-        print(f"Directory '{dirname}' created.")
+        mkdir(dirname)
+    elif cmd == "touch":
+        if len(parts) < 2:
+            print("Usage: touch <filename>")
+            return
+        filename = parts[1]
+        touch(filename)
+    elif cmd == "pwd":
+        pwd()
     else:
-        bin_command_path = os.path.join(base_directory, 'bin', f"{cmd}.py")
-        if os.path.exists(bin_command_path):
-            os.system(f"python3 {bin_command_path} {' '.join(parts[1:])}")
+        bin_cmd_path = os.path.join(base_directory, 'bin', f"{cmd}.py")
+        if os.path.exists(bin_cmd_path):
+            os.system(f"python3 {bin_cmd_path} {' '.join(parts[1:])}")
         else:
-            print(f"Command '{cmd}' not found.")
+            print("Command not found.")
+
+def touch(filename):
+    print("Due to how SpaceOS is created. we as the developrs are unable to make write perms due to how the vfs is made. Please make a pr and add code. we would love it <3")
+
+def pwd():
+    print(current_home)
+
+def mkdir(dirname):
+    print("Due to how SpaceOS is created. we as the developrs are unable to make write perms due to how the vfs is made. Please make a pr and add code. we would love it <3")
+
+def help_command():
+    commands = {
+        "echo": "Print text to the output.",
+        "cat": "Display the contents of a file.",
+        "appinstall": "Install an application.",
+        "appremove": "Remove an installed application.",
+        "appreinstall": "Reinstall an application.",
+        "vpasswd": "Change the password for the root user.",
+        "help": "Display this help message.",
+        "exit": "Exit the OS.",
+        "pwd": "Print the current working directory.",
+        "rm": "Remove a file or directory."
+    }
+    for cmd, desc in commands.items():
+        print(f"{cmd}: {desc}")
 
 initialize_file_system()
 
 if login():
     while True:
-        command = input(f"{current_user}@spaceOS-isovm ~ $ ")
+        command = input(f"{current_user}@spaceOS ~ $ ")
         execute_command(command)
 else:
     print("Failed to login.")
