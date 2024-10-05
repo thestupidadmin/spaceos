@@ -150,6 +150,7 @@ def execute_command(command):
 
     if cmd == "exit":
         print("This is a cloudshared vps. You cant exit it. You can run isolated vms on it yea yea but cant exit it.")
+        sys.exit(0)
     elif cmd == "clear":
         os.system('clear')
     elif cmd == "echo":
