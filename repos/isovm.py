@@ -12,7 +12,7 @@ signal.signal(signal.SIGINT, signal_handler)
 print("Starting SpaceOS Init - ISOVM Kernel")
 total_steps = 100
 for i in range(total_steps + 1):
-    time.sleep(0.0050)
+    time.sleep(0.050)
     print(f"\r[{'#' * (i // 2)}{' ' * (50 - i // 2)}] {i}%", end="")
     sys.stdout.flush()
 print("\nSpaceOS Init Complete! - ISOVM Kernel")
@@ -33,7 +33,7 @@ def initialize_file_system():
 
     if not os.path.exists(USERS_FILE):
         with open(USERS_FILE, 'w') as f:
-            f.write("root::/root\n")
+            f.write("root:root:/root\n")
             print("Default user 'root' created without password.")
 
     if not os.path.exists(REPO_FILE):
