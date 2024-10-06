@@ -62,7 +62,20 @@ def login():
                 return False
             current_user = username
             current_home = user_info[2]
-            print(f"Logged in as {username}. Home directory: {current_home}")
+            os.system("clear")
+            print("""
+________  ________  ________  ________  _______   ________  ________      
+|\   ____\|\   __  \|\   __  \|\   ____\|\  ___ \ |\   __  \|\   ____\     
+\ \  \___|\ \  \|\  \ \  \|\  \ \  \___|\ \   __/|\ \  \|\  \ \  \___|_    
+ \ \_____  \ \   ____\ \   __  \ \  \    \ \  \_|/_\ \  \\\  \ \_____  \   
+  \|____|\  \ \  \___|\ \  \ \  \ \  \____\ \  \_|\ \ \  \\\  \|____|\  \  
+    ____\_\  \ \__\    \ \__\ \__\ \_______\ \_______\ \_______\____\_\  \ 
+   |\_________\|__|     \|__|\|__|\|_______|\|_______|\|_______|\_________\
+   \|_________|                                                \|_________|
+                                                                           
+                                                                           
+            """)
+            print(f"Welcome Back! {username}!. Home directory: {current_home}")
             return True
     print("User not found.")
     return False
